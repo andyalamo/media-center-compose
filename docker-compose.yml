@@ -34,7 +34,7 @@ services:
 
   plex:
     image: lscr.io/linuxserver/plex
-    container_name: plex2
+    container_name: plex
     environment:
       - PUID=1001
       - PGID=1001
