@@ -1,7 +1,7 @@
 services:
 
   sonarr:
-    image: lscr.io/linuxserver/sonarr
+    image: linuxserver/sonarr
     container_name: sonarr
     environment:
       - PUID=0
@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: lscr.io/linuxserver/radarr
+    image: linuxserver/radarr
     container_name: radarr
     environment:
       - PUID=0
@@ -33,7 +33,7 @@ services:
       - sonarr
 
   plex:
-    image: lscr.io/linuxserver/plex
+    image: linuxserver/plex
     container_name: plex
     environment:
       - PUID=1001
@@ -62,7 +62,7 @@ services:
       - radarr
       
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent
+    image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
       - PUID=0
@@ -79,7 +79,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr
+    image: linuxserver/bazarr
     container_name: bazarr
     environment:
       - PUID=0
@@ -94,7 +94,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:develop
+    image: linuxserver/prowlarr
     container_name: prowlarr
     environment:
       - PUID=0
