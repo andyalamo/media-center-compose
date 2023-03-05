@@ -68,7 +68,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=America/Montevideo
-      - WEBUI_PORT=8081
+      - WEBUI_PORT=8080
     volumes:
       - /opt/plex_andcar/qbittorrent/config:/config
       - /plex-datos/downloads:/downloads
