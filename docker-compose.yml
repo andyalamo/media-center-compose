@@ -40,7 +40,6 @@ services:
       - PGID=1001
       - TZ=America/Montevideo
       - VERSION=docker
-      - LAN=${LAN_IP}
     volumes:
       - /opt/plex_andcar/plex/config:/config		#Confis de Plex
       - /plex-datos/tvseries:/tv 	    #Debe ser un almacenamiento para guardar basura
@@ -70,6 +69,7 @@ services:
       - PGID=0
       - TZ=America/Montevideo
       - WEBUI_PORT=8080
+      - LAN=${LAN_IP}
     volumes:
       - /opt/plex_andcar/qbittorrent/config:/config
       - /plex-datos/downloads:/downloads
