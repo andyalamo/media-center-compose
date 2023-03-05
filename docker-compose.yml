@@ -39,7 +39,8 @@ services:
       - PUID=1001
       - PGID=1001
       - TZ=America/Montevideo
-      - VERSION=docker  
+      - VERSION=docker
+      - LAN=${LAN_IP}
     volumes:
       - /opt/plex_andcar/plex/config:/config		#Confis de Plex
       - /plex-datos/tvseries:/tv 	    #Debe ser un almacenamiento para guardar basura
