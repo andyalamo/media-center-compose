@@ -105,3 +105,19 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
+
+services:
+  readarr:
+    image: lscr.io/linuxserver/readarr:latest
+    container_name: readarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Montevideo
+    volumes:
+      - /opt/readarr/config:/config
+      - /opt/readarr/downloads:/downloads #optional
+      - /harry/andres/libros:/books
+    ports:
+      - 8787:8787
+    restart: unless-stopped
