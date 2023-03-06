@@ -106,7 +106,6 @@ services:
       - 9696:9696
     restart: unless-stopped
 
-services:
   readarr:
     image: lscr.io/linuxserver/readarr:latest
     container_name: readarr
