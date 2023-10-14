@@ -105,3 +105,15 @@ services:
     ports:
       - 9696:9696
     restart: unless-stopped
+    
+  flaresolverr:
+    image: flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=America/Montevideo
+    ports:
+      - 8191:8191
+    restart: unless-stopped 
