@@ -36,8 +36,8 @@ services:
     image: linuxserver/plex
     container_name: plex
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1001
+      - PGID=1001
       - TZ=America/Montevideo
       - VERSION=docker
     volumes:
