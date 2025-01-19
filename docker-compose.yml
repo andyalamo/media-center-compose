@@ -93,6 +93,21 @@ services:
       - 6767:6767
     restart: unless-stopped
 
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+    volumes:
+      - /opt/plex_andcar/readarr/config:/config
+      - /plex-datos/books:/books #optional
+      - /plex-datos/downloads:/downloads #optional
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+    
   prowlarr:
     image: linuxserver/prowlarr
     container_name: prowlarr
