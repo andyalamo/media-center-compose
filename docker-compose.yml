@@ -97,8 +97,8 @@ services:
     image: lscr.io/linuxserver/readarr:develop
     container_name: readarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/Montevideo
     volumes:
       - /opt/plex_andcar/readarr/config:/config
