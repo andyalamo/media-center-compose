@@ -29,9 +29,26 @@ services:
     ports:
       - 7878:7878
     restart: unless-stopped
-    depends_on:
-      - sonarr
 
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=America/Montevideo
+    volumes:
+      - /opt/plex_andcar/plex/config:/config		#Confis de Plex
+      - /plex-datos/tvseries:/data/tvshows      #Debe ser un almacenamiento para guardar basura
+      - /plex-datos/movies:/data/movies		 	    #Debe ser un almacenamiento para guardar basura
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    network_mode: "host"
+      
   plex:
     image: linuxserver/plex
     container_name: plex
@@ -56,10 +73,6 @@ services:
       - 32414:32414/udp
     restart: unless-stopped
     network_mode: "host"
-    depends_on:
-
-      - sonarr
-      - radarr
       
   qbittorrent:
     image: linuxserver/qbittorrent
