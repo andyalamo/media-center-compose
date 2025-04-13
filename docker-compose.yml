@@ -8,9 +8,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/sonarr/config:/config		#Confis de Sonarr
-      - /plex-datos/tvseries:/tv 			        #Debe ser un almacenamiento para guardar basura
-      - /plex-datos/downloads:/downloads 		    #Debe ser un almacenamiento para guardar basura
+      - ${}:/config	                #Confis de Sonarr
+      - ${}:/tv 			              #Almacenamiento grande para peliculas
+      - ${}:/downloads 		          #Almacenamiento grande para descargas
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -23,9 +23,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/radarr/config:/config		#Confis de Radarr
-      - /plex-datos/movies:/movies         		#Debe ser un almacenamiento para guardar basura
-      - /plex-datos/downloads:/downloads 		    #Debe ser un almacenamiento para guardar basura
+      - ${}:/config	                #Confis de Radarr
+      - ${}:/movies         		    #Almacenamiento grande para series
+      - ${}:/downloads 		          #Almacenamiento grande para descargas
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -38,9 +38,9 @@ services:
       - PGID=1001
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/plex/config:/config		#Confis de Plex
-      - /plex-datos/tvseries:/data/tvshows      #Debe ser un almacenamiento para guardar basura
-      - /plex-datos/movies:/data/movies		 	    #Debe ser un almacenamiento para guardar basura
+      - ${}:/config	                #Confis de jellyfin
+      - ${}:/data/tvshows           #Almacenamiento grande para series
+      - ${}:/data/movies		 	      #Almacenamiento grande para peliculas
     ports:
       - 8096:8096
       - 8920:8920 #optional
@@ -48,32 +48,7 @@ services:
       - 1900:1900/udp #optional
     restart: unless-stopped
     network_mode: "host"
-      
-  plex:
-    image: linuxserver/plex
-    container_name: plex
-    environment:
-      - PUID=1001
-      - PGID=1001
-      - TZ=America/Montevideo
-      - VERSION=docker
-    volumes:
-      - /opt/plex_andcar/plex/config:/config		#Confis de Plex
-      - /plex-datos/tvseries:/tv 	    #Debe ser un almacenamiento para guardar basura
-      - /plex-datos/movies:/movies		 	    #Debe ser un almacenamiento para guardar basura
-    ports:
-      - 32400:32400/tcp
-      - 3005:3005/tcp
-      - 8324:8324/tcp
-      - 32469:32469/tcp
-      - 1900:1900/udp
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
-    restart: unless-stopped
-    network_mode: "host"
-      
+
   qbittorrent:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
@@ -83,8 +58,8 @@ services:
       - TZ=America/Montevideo
       - WEBUI_PORT=8081
     volumes:
-      - /opt/plex_andcar/qbittorrent/config:/config
-      - /plex-datos/downloads:/downloads
+      - ${}:/config	                #Confis de qbittorrent
+      - ${}:/downloads 		          #Almacenamiento grande para descargas
     ports:
       - 6881:6881/tcp
       - 6881:6881/udp
@@ -99,9 +74,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/bazarr/config:/config
-      - /plex-datos/movies:/movies
-      - /plex-datos/tvseries:/tv
+      - ${}:/config	                #Confis de bazarr
+      - ${}:/movies         		    #Almacenamiento grande para series
+      - ${}:/tv 			              #Almacenamiento grande para peliculas
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -114,9 +89,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/readarr/config:/config
-      - /plex-datos/books:/books #optional
-      - /plex-datos/downloads:/downloads #optional
+      - ${}:/config	                #Confis de readarr
+      - ${}:/books                  #Almacenamiento para libros
+      - ${}:/downloads 		          #Almacenamiento grande para descargas
     ports:
       - 8787:8787
     restart: unless-stopped
@@ -129,7 +104,7 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - /opt/plex_andcar/prowlarr/config:/config
+      - ${}:/config	                #Confis de prowlarr
     ports:
       - 9696:9696
     restart: unless-stopped
