@@ -8,9 +8,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de Sonarr
-      - ${}:/tv 			              #Almacenamiento grande para peliculas
-      - ${}:/downloads 		          #Almacenamiento grande para descargas
+      - ${sonarr_config_path}:/config	                #Confis de Sonarr
+      - ${serie_files_path}:/tv 			                #Almacenamiento grande para series
+      - ${download_files_path}:/downloads 		        #Almacenamiento grande para descargas
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -23,9 +23,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de Radarr
-      - ${}:/movies         		    #Almacenamiento grande para series
-      - ${}:/downloads 		          #Almacenamiento grande para descargas
+      - ${radarr_config_path}:/config	                #Confis de radarr
+      - ${movie_files_path}:/movies         		      #Almacenamiento grande para peliculas
+      - ${download_files_path}:/downloads 		        #Almacenamiento grande para descargas
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -38,9 +38,9 @@ services:
       - PGID=1001
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de jellyfin
-      - ${}:/data/tvshows           #Almacenamiento grande para series
-      - ${}:/data/movies		 	      #Almacenamiento grande para peliculas
+      - ${jellyfin_config_path}:/config              #Confis de jellyfin
+      - ${serie_files_path}:/data/tvshows            #Almacenamiento grande para series
+      - ${movie_files_path}:/data/movies		 	       #Almacenamiento grande para peliculas
     ports:
       - 8096:8096
       - 8920:8920 #optional
@@ -58,8 +58,8 @@ services:
       - TZ=America/Montevideo
       - WEBUI_PORT=8081
     volumes:
-      - ${}:/config	                #Confis de qbittorrent
-      - ${}:/downloads 		          #Almacenamiento grande para descargas
+      - ${qbittorrent_config_path}:/config            #Confis de qbittorrent
+      - ${download_files_path}:/downloads 		        #Almacenamiento grande para descargas
     ports:
       - 6881:6881/tcp
       - 6881:6881/udp
@@ -74,9 +74,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de bazarr
-      - ${}:/movies         		    #Almacenamiento grande para series
-      - ${}:/tv 			              #Almacenamiento grande para peliculas
+      - ${bazarr_config_path}:/config                  #Confis de bazarr
+      - ${movie_files_path}:/movies         		       #Almacenamiento grande para peliculas
+      - ${serie_files_path}:/tv 			                 #Almacenamiento grande para series
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -89,9 +89,9 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de readarr
-      - ${}:/books                  #Almacenamiento para libros
-      - ${}:/downloads 		          #Almacenamiento grande para descargas
+      - ${readarr_config_path}:/config                 #Confis de readarr
+      - ${book_files_path}:/books                      #Almacenamiento para libros
+      - ${download_files_path}:/downloads 		         #Almacenamiento grande para descargas
     ports:
       - 8787:8787
     restart: unless-stopped
@@ -104,7 +104,7 @@ services:
       - PGID=0
       - TZ=America/Montevideo
     volumes:
-      - ${}:/config	                #Confis de prowlarr
+      - ${prowlarr_config_path}:/config	               #Confis de prowlarr
     ports:
       - 9696:9696
     restart: unless-stopped
