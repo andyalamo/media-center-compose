@@ -39,10 +39,11 @@ services:
     environment:
       - TZ=America/Montevideo
     volumes:
-      - ${jellyfin_config_path}:/config              #Confis de jellyfin
-      - ${jellyfin_cache_path}:/cache
-      - ${serie_files_path}:/data/tvshows            #Almacenamiento grande para series
-      - ${movie_files_path}:/data/movies		 	       #Almacenamiento grande para peliculas
+      - ${jellyfin_config_path}:/config:rw              #Confis de jellyfin
+      - ${jellyfin_cache_path}:/cache:rw
+      - ${serie_files_path}:/shows:rw                #Almacenamiento grande para series
+      - ${movie_files_path}:/movies:ro		 	         #Almacenamiento grande para peliculas
+        read_only: true
     restart: unless-stopped
     network_mode: "host"
     devices:
