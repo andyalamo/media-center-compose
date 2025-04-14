@@ -24,7 +24,6 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ${radarr_config_path}:/config	                #Confis de radarr
-      - ${radarr_cache_path}:/config
       - ${movie_files_path}:/movies         		      #Almacenamiento grande para peliculas
       - ${download_files_path}:/downloads 		        #Almacenamiento grande para descargas
     ports:
@@ -41,6 +40,7 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ${jellyfin_config_path}:/config              #Confis de jellyfin
+      - ${jellyfi_cache_path}:/cache
       - ${serie_files_path}:/data/tvshows            #Almacenamiento grande para series
       - ${movie_files_path}:/data/movies		 	       #Almacenamiento grande para peliculas
     restart: unless-stopped
