@@ -40,7 +40,7 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ${jellyfin_config_path}:/config              #Confis de jellyfin
-      - ${jellyfi_cache_path}:/cache
+      - ${jellyfin_cache_path}:/cache
       - ${serie_files_path}:/data/tvshows            #Almacenamiento grande para series
       - ${movie_files_path}:/data/movies		 	       #Almacenamiento grande para peliculas
     restart: unless-stopped
