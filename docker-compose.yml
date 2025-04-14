@@ -48,6 +48,8 @@ services:
       - 1900:1900/udp #optional
     restart: unless-stopped
     network_mode: "host"
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
 
   qbittorrent:
     image: linuxserver/qbittorrent
