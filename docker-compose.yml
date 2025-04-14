@@ -24,6 +24,7 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ${radarr_config_path}:/config	                #Confis de radarr
+      - ${radarr_coche_path}:/config
       - ${movie_files_path}:/movies         		      #Almacenamiento grande para peliculas
       - ${download_files_path}:/downloads 		        #Almacenamiento grande para descargas
     ports:
