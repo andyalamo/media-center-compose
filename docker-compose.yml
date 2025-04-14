@@ -35,8 +35,9 @@ services:
     container_name: jellyfin
     group_add:
         - "104"
-    user: "1000:1000"
     environment:
+      - PUID=1001
+      - PGID=1001
       - TZ=America/Montevideo
     volumes:
       - ${jellyfin_config_path}:/config              #Confis de jellyfin
@@ -50,6 +51,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     devices:
+      - /dev/dri/card0
       - /dev/dri/renderD128:/dev/dri/renderD128
 
   qbittorrent:
