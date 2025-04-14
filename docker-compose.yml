@@ -33,6 +33,8 @@ services:
   jellyfin:
     image: linuxserver/jellyfin
     container_name: jellyfin
+    group_add:
+        - "104"
     environment:
       - PUID=1001
       - PGID=1001
@@ -49,7 +51,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     devices:
-      - /dev/dri:/dev/dri
+      - /dev/dri/renderD128:/dev/dri/renderD128
 
   qbittorrent:
     image: linuxserver/qbittorrent
