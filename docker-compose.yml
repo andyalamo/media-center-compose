@@ -43,7 +43,6 @@ services:
       - ${jellyfin_cache_path}:/cache:rw
       - ${serie_files_path}:/shows:rw                #Almacenamiento grande para series
       - ${movie_files_path}:/movies:ro		 	         #Almacenamiento grande para peliculas
-        read_only: true
     restart: unless-stopped
     network_mode: "host"
     devices:
