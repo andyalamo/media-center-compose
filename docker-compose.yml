@@ -49,7 +49,7 @@ services:
     restart: unless-stopped
     network_mode: "host"
     devices:
-      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri:/dev/dri
 
   qbittorrent:
     image: linuxserver/qbittorrent
