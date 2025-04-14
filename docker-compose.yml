@@ -40,14 +40,13 @@ services:
       - TZ=America/Montevideo
     volumes:
       - ${jellyfin_config_path}:/config:rw              #Confis de jellyfin
-      - ${jellyfin_config_path}/log:/config/log:rw              #Confis de jellyfin
       - ${jellyfin_cache_path}:/cache:rw
       - ${serie_files_path}:/shows:rw                #Almacenamiento grande para series
       - ${movie_files_path}:/movies:ro		 	         #Almacenamiento grande para peliculas
     restart: unless-stopped
     network_mode: "host"
     devices:
-      - /dev/dri/card0
+      - /dev/dri/card0:/dev/dri/card0
       - /dev/dri/renderD128:/dev/dri/renderD128
 
   qbittorrent:
