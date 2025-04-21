@@ -93,9 +93,8 @@ services:
   recyclarr:
     image: recyclarr/recyclarr
     container_name: recyclarr
+    user: 1000:1000
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
