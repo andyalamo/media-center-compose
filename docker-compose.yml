@@ -4,8 +4,8 @@ services:
     image: linuxserver/sonarr
     container_name: sonarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${sonarr_config_path}:/config	                #Confis de Sonarr
@@ -19,8 +19,8 @@ services:
     image: linuxserver/radarr
     container_name: radarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${radarr_config_path}:/config	                #Confis de radarr
@@ -34,8 +34,8 @@ services:
     image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
       - WEBUI_PORT=8081
     volumes:
@@ -51,8 +51,8 @@ services:
     image: linuxserver/bazarr
     container_name: bazarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${bazarr_config_path}:/config                  #Confis de bazarr
@@ -66,8 +66,8 @@ services:
     image: linuxserver/readarr:develop
     container_name: readarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${readarr_config_path}:/config                 #Confis de readarr
@@ -81,8 +81,8 @@ services:
     image: linuxserver/prowlarr
     container_name: prowlarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${prowlarr_config_path}:/config	               #Confis de prowlarr
@@ -94,8 +94,8 @@ services:
     image: recyclarr/recyclarr
     container_name: recyclarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
@@ -105,8 +105,8 @@ services:
     image: flaresolverr/flaresolverr:latest
     container_name: flaresolverr
     environment:
-        - PUID=0
-        - PGID=0
+        - PUID=1000
+        - PGID=1000
         - LOG_LEVEL=info
         - LOG_HTML=false
         - CAPTCHA_SOLVER=none
@@ -119,8 +119,8 @@ services:
     image: srouaix/flare-bypasser
     container_name: flare-bypasser
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
       - UNUSED=false
       - SAVE_CHALLENGE_SCREENSHOTS=true
