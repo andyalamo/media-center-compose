@@ -1,7 +1,7 @@
 services:
 
   sonarr:
-    image: sonarr
+    image: linuxserver/sonarr
     container_name: sonarr
     environment:
       - PUID=1000
@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: radarr
+    image: linuxserver/radarr
     container_name: radarr
     environment:
       - PUID=1000
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: qbittorrent
+    image: linuxserver/qbittorrent
     container_name: qbittorrent
     environment:
       - PUID=1000
@@ -48,7 +48,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: bazarr
+    image: linuxserver/bazarr
     container_name: bazarr
     environment:
       - PUID=1000
@@ -63,7 +63,7 @@ services:
     restart: unless-stopped
 
   readarr:
-    image: readarr:develop
+    image: linuxserver/readarr:develop
     container_name: readarr
     environment:
       - PUID=1000
@@ -78,7 +78,7 @@ services:
     restart: unless-stopped
     
   prowlarr:
-    image: prowlarr
+    image: linuxserver/prowlarr
     container_name: prowlarr
     environment:
       - PUID=1000
