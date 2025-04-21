@@ -91,38 +91,40 @@ services:
     restart: unless-stopped
 
   recyclarr:
-      image: recyclarr/recyclarr
-      container_name: recyclarr
-      environment:
-          - PUID=1000
-          - PGID=1000
-          - TZ=America/Montevideo
-      restart: unless-stopped
-      volumes:
-          - ${recyclarr_config_path}:/config	           #Confis de recyclarr
-          
+    image: recyclarr/recyclarr
+    container_name: recyclarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+    volumes:
+      - ${recyclarr_config_path}:/config	           #Confis de recyclarr
+    restart: unless-stopped
+    
   flaresolverr:
     image: flaresolverr/flaresolverr:latest
     container_name: flaresolverr
     environment:
-      - LOG_LEVEL=info
-      - LOG_HTML=false
-      - CAPTCHA_SOLVER=none
-      - TZ=America/Montevideo
+        - PUID=1000
+        - PGID=1000
+        - LOG_LEVEL=info
+        - LOG_HTML=false
+        - CAPTCHA_SOLVER=none
+        - TZ=America/Montevideo
     ports:
       - 8191:8191
     restart: unless-stopped 
 
   flare-bypasser:
-      image: srouaix/flare-bypasser
-      container_name: flare-bypasser
-      environment:
-          - PUID=1000
-          - PGID=1000
-          - TZ=America/Montevideo
-          - UNUSED=false
-          - SAVE_CHALLENGE_SCREENSHOTS=true
-      ports:
-        - 8192:8080
-      restart: unless-stopped
+    image: srouaix/flare-bypasser
+    container_name: flare-bypasser
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montevideo
+      - UNUSED=false
+      - SAVE_CHALLENGE_SCREENSHOTS=true
+    ports:
+      - 8192:8080
+    restart: unless-stopped
       
