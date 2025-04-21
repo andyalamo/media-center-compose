@@ -1,11 +1,11 @@
 services:
 
   sonarr:
-    image: linuxserver/sonarr
+    image: sonarr
     container_name: sonarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${sonarr_config_path}:/config	                #Confis de Sonarr
@@ -16,11 +16,11 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: linuxserver/radarr
+    image: radarr
     container_name: radarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${radarr_config_path}:/config	                #Confis de radarr
@@ -31,11 +31,11 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: linuxserver/qbittorrent
+    image: qbittorrent
     container_name: qbittorrent
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
       - WEBUI_PORT=8081
     volumes:
@@ -48,11 +48,11 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: linuxserver/bazarr
+    image: bazarr
     container_name: bazarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${bazarr_config_path}:/config                  #Confis de bazarr
@@ -63,11 +63,11 @@ services:
     restart: unless-stopped
 
   readarr:
-    image: lscr.io/linuxserver/readarr:develop
+    image: readarr:develop
     container_name: readarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${readarr_config_path}:/config                 #Confis de readarr
@@ -78,18 +78,29 @@ services:
     restart: unless-stopped
     
   prowlarr:
-    image: linuxserver/prowlarr
+    image: prowlarr
     container_name: prowlarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Montevideo
     volumes:
       - ${prowlarr_config_path}:/config	               #Confis de prowlarr
     ports:
       - 9696:9696
     restart: unless-stopped
-    
+
+  recyclarr:
+      image: recyclarr/recyclarr
+      container_name: recyclarr
+      environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=America/Montevideo
+      restart: unless-stopped
+      volumes:
+          - ${recyclarr_config_path}:/config	           #Confis de recyclarr
+          
   flaresolverr:
     image: flaresolverr/flaresolverr:latest
     container_name: flaresolverr
@@ -101,3 +112,17 @@ services:
     ports:
       - 8191:8191
     restart: unless-stopped 
+
+  flare-bypasser:
+      image: srouaix/flare-bypasser
+      container_name: flare-bypasser
+      environment:
+          - PUID=1000
+          - PGID=1000
+          - TZ=America/Montevideo
+          - UNUSED=false
+          - SAVE_CHALLENGE_SCREENSHOTS=true
+      ports:
+        - 8192:8080
+      restart: unless-stopped
+      
