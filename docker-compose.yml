@@ -62,20 +62,20 @@ services:
       - 6767:6767
     restart: unless-stopped
 
-  #readarr:
-  #  image: linuxserver/readarr:develop
-  #  container_name: readarr
-  #  environment:
-  #    - PUID=0
-  #    - PGID=0
-  #    - TZ=America/Montevideo
-  #  volumes:
-  #    - ${readarr_config_path}:/config                 #Confis de readarr
-  #    - ${book_files_path}:/books                      #Almacenamiento para libros
-  #    - ${download_files_path}:/downloads 		         #Almacenamiento grande para descargas
-  #  ports:
-  #    - 8787:8787
-  #  restart: unless-stopped
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Montevideo
+    volumes:
+      - ${readarr_config_path}:/config                 #Confis de readarr
+      - ${book_files_path}:/books                      #Almacenamiento para libros
+      - ${download_files_path}:/downloads 		         #Almacenamiento grande para descargas
+    ports:
+      - 8787:8787
+    restart: unless-stopped
     
   prowlarr:
     image: linuxserver/prowlarr
@@ -101,15 +101,15 @@ services:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
 
-  #simple-cloudflare-solver:
-    #image: ghcr.io/nlevee/simple-cloudflare-solver:main
-    #container_name: simple-cloudflare-solver
-    #environment:
-    #  - PUID=0
-    #  - PGID=0
-    #  - TZ=America/Montevideo
-    #  - LOG_LEVEL=debug
-    #ports:
-    #  - 9117:9117
-    #restart: unless-stopped
+  simple-cloudflare-solver:
+    image: ghcr.io/nlevee/simple-cloudflare-solver:main
+    container_name: simple-cloudflare-solver
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Montevideo
+      - LOG_LEVEL=debug
+    ports:
+      - 9117:9117
+    restart: unless-stopped
       
