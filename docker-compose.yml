@@ -101,15 +101,15 @@ services:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
 
-  simple-cloudflare-solver:
-    image: ghcr.io/nlevee/simple-cloudflare-solver:main
-    container_name: simple-cloudflare-solver
+  byparr:
+    image: ghcr.io/thephaseless/byparr:latest
+    container_name: byparr
     environment:
       - PUID=0
       - PGID=0
       - TZ=America/Montevideo
       - LOG_LEVEL=debug
     ports:
-      - 9117:9117
+      - 8191:8191
     restart: unless-stopped
       
