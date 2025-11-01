@@ -86,12 +86,10 @@ services:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
 
-  byparr:
-    image: ghcr.io/thephaseless/byparr:latest
-    container_name: byparr
-    environment:
-      - HOST=0.0.0.0
+  simple-cloudflare-solver:
+    image: ghcr.io/nlevee/simple-cloudflare-solver:main
+    container_name: simple-cloudflare-solver
     ports:
-      - 8191:8191
+      - 8191:8000
     restart: unless-stopped
       
