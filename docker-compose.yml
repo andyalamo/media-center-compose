@@ -100,20 +100,6 @@ services:
     volumes:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
-    
-  flaresolverr:
-    image: flaresolverr/flaresolverr:latest
-    container_name: flaresolverr
-    environment:
-        - PUID=0
-        - PGID=0
-        - LOG_LEVEL=info
-        - LOG_HTML=false
-        - CAPTCHA_SOLVER=none
-        - TZ=America/Montevideo
-    ports:
-      - 8191:8191
-    restart: unless-stopped 
 
   flare-bypasser:
     image: srouaix/flare-bypasser
