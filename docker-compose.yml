@@ -101,16 +101,10 @@ services:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
 
-  flare-bypasser:
-    image: srouaix/flare-bypasser
+  byparr:
+    image: ghcr.io/thephaseless/byparr:latest
     container_name: flare-bypasser
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=America/Montevideo
-      - UNUSED=false
-      - SAVE_CHALLENGE_SCREENSHOTS=true
     ports:
-      - 8192:8080
+      - 8191:8191
     restart: unless-stopped
       
