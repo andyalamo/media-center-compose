@@ -104,7 +104,12 @@ services:
   simple-cloudflare-solver:
     image: ghcr.io/nlevee/simple-cloudflare-solver:main
     container_name: simple-cloudflare-solver
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Montevideo
+      - LOG_LEVEL=debug
     ports:
-      - 8191:8000
+      - 9117:9117
     restart: unless-stopped
       
