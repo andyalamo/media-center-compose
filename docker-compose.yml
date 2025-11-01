@@ -86,11 +86,11 @@ services:
       - ${recyclarr_config_path}:/config	           #Confis de recyclarr
     restart: unless-stopped
 
-byparr:
-    image: ghcr.io/thephaseless/byparr:latest
-    container_name: byparr
-    ports:
-      - "8191:8191"
-    environment:
-      - HOST=0.0.0.0
-    restart: unless-stopped
+  byparr:
+      image: ghcr.io/thephaseless/byparr:latest
+      container_name: byparr
+      ports:
+        - 8191:8191
+      environment:
+        - HOST=0.0.0.0
+      restart: unless-stopped
