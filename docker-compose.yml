@@ -61,21 +61,6 @@ services:
     ports:
       - 6767:6767
     restart: unless-stopped
-
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=America/Montevideo
-    volumes:
-      - ${readarr_config_path}:/config                 #Confis de readarr
-      - ${book_files_path}:/books                      #Almacenamiento para libros
-      - ${download_files_path}:/downloads 		         #Almacenamiento grande para descargas
-    ports:
-      - 8787:8787
-    restart: unless-stopped
     
   prowlarr:
     image: linuxserver/prowlarr
